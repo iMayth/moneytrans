@@ -10,13 +10,13 @@ public class LoginPage extends BasePage{
         PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(css = "#email")
+    @FindBy(xpath = "//body/div[@id='ModalPopup']/div[1]/div[1]/div[2]/form[1]/div[1]/input[1]")
     public WebElement email;
 
-    @FindBy(xpath = "//*[@id=password]")
+    @FindBy(xpath = "//input[@id='password']")
     public WebElement password;
 
-    @FindBy(id = "loginButton")
+    @FindBy(xpath = "//button[@id='loginButton']")
     public WebElement loginButton2;
 
     @FindBy(xpath = "//*[@id=\"popmake-16742\"]/button")

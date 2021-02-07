@@ -11,16 +11,14 @@ import moneytrans.utilities.Driver;
 import org.junit.Assert;
 
 
-
 public class loginStepDefs {
     @Given("The user is on the main page")
     public void the_user_is_on_the_main_page() {
 
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
-        BrowserUtils.waitForClickability(new LoginPage().closePopup,10);
-        new LoginPage().closePopup.click();
-
+        //BrowserUtils.waitForClickability(new LoginPage().closePopup,10);
+        //new LoginPage().closePopup.click();
 
     }
 
@@ -36,16 +34,25 @@ public class loginStepDefs {
        String email = ConfigurationReader.get("email");
        String password = ConfigurationReader.get("password");
 
+        BrowserUtils.waitForVisibility(new LoginPage().email,10);
         new LoginPage().email.sendKeys(email);
         new LoginPage().password.sendKeys(password);
+
         new LoginPage().loginButton2.click();
 
+        BrowserUtils.waitFor(3);
 
     }
     @Then("The user should be at services page of the website")
     public void the_user_should_be_at_services_page_of_the_website() {
-        String expectedTitle = new ServicesPage().serviceTitle.getText();
+
+        String expectedTitle = new ServicesPage().serviceTitle.getAttribute("text");
+
+        System.out.println(expectedTitle);
+
         String actualTitle = Driver.get().getTitle();
+
+        System.out.println(actualTitle);
 
         Assert.assertEquals(expectedTitle,actualTitle);
 

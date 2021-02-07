@@ -11,7 +11,7 @@ public abstract class BasePage {
     }
 
 
-    @FindBy(xpath = "//*[@id=\"menu-item-16280\"]/a")
+    @FindBy(xpath = "//header/div[1]/div[2]/div[3]/div[1]/nav[1]/ul[1]/li[5]/a[1]")
     public WebElement loginButton;
 
 
